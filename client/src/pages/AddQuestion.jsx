@@ -15,6 +15,8 @@ function AddQuestion() {
   const [jsonInput, setJsonInput] = useState('');
   const [importedQuestion, setImportedQuestion] = useState(null);
   const [editorVersion, setEditorVersion] = useState(0);
+  const [jsonSaveMessage, setJsonSaveMessage] = useState('');
+  const [jsonSaveError, setJsonSaveError] = useState('');
 
   const demoJson = JSON.stringify({
     exam_name: 'DSSSB TGT Computer Science',
@@ -46,6 +48,8 @@ function AddQuestion() {
   function fillFromJson() {
     setMessage('');
     setError('');
+    setJsonSaveMessage('');
+    setJsonSaveError('');
     try {
       const parsed = JSON.parse(jsonInput);
       const question = Array.isArray(parsed) ? parsed[0] : parsed.questions?.[0] || parsed;
@@ -60,7 +64,28 @@ function AddQuestion() {
     }
   }
 
-  return <section className="view-pane active admin-page" id="add-question-pane"><div className="glass-card admin-intro-card"><h3>➕ Add a New Question</h3><p>Build a question with multiple options, a correct answer, and an explanation. Embed code, images, or match-column content directly into your question.</p></div><div className="glass-card json-question-import"><div className="json-import-heading"><div><h3>Import Question from JSON</h3><p>Paste one question object or a JSON file containing a <code>questions</code> array to fill the form automatically.</p></div><span className="json-import-badge">FAST FILL</span></div><div className="json-import-grid"><div><label className="json-label" htmlFor="question-json-input">Question JSON</label><textarea id="question-json-input" value={jsonInput} onChange={(event) => setJsonInput(event.target.value)} placeholder="Paste question JSON here..." spellCheck="false" /><div className="json-import-actions"><button className="btn btn-primary" type="button" disabled={!jsonInput.trim()} onClick={fillFromJson}>Fill Form from JSON</button><button className="btn btn-secondary" type="button" onClick={() => setJsonInput(demoJson)}>Load Demo JSON</button></div></div><div><div className="json-label">Demo JSON structure</div><pre className="json-demo"><code>{demoJson}</code></pre></div></div></div><div className="aq-layout"><div className="glass-card"><QuestionEditorForm key={editorVersion} initialQuestion={importedQuestion || undefined} categories={questions.map((question) => question.category).filter(Boolean).filter((category, index, list) => list.indexOf(category) === index).sort()} onSubmit={saveQuestion} statusMessage={message} statusError={error} /></div></div></section>;
+  async function saveJsonQuestion() {
+    if (!importedQuestion) return;
+    setJsonSaveMessage('');
+    setJsonSaveError('');
+    const options = Array.isArray(importedQuestion.options)
+      ? Object.fromEntries(importedQuestion.options.map((value, index) => [String(index + 1), value]))
+      : importedQuestion.options;
+    const { id, ...questionData } = importedQuestion;
+    try {
+      const response = await fetch(`${API_URL}/api/questions`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ ...questionData, ...(id !== undefined ? { legacy_id: id } : {}), options, custom_added: true }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Unable to save question.');
+      setQuestions((current) => [...current, data]);
+      setJsonSaveMessage('Question saved successfully from JSON.');
+      showToast('Question saved successfully from JSON.', 'success');
+    } catch (saveError) {
+      setJsonSaveError(saveError.message);
+      showToast(saveError.message, 'error');
+    }
+  }
+
+  return <section className="view-pane active admin-page" id="add-question-pane"><div className="glass-card admin-intro-card"><h3>➕ Add a New Question</h3><p>Build a question with multiple options, a correct answer, and an explanation. Embed code, images, or match-column content directly into your question.</p></div><div className="glass-card json-question-import"><div className="json-import-heading"><div><h3>Import Question from JSON</h3><p>Paste one question object or a JSON file containing a <code>questions</code> array to fill the form automatically.</p></div><span className="json-import-badge">FAST FILL</span></div><div className="json-import-grid"><div><label className="json-label" htmlFor="question-json-input">Question JSON</label><textarea id="question-json-input" value={jsonInput} onChange={(event) => setJsonInput(event.target.value)} placeholder="Paste question JSON here..." spellCheck="false" /><div className="json-import-actions"><button className="btn btn-primary" type="button" disabled={!jsonInput.trim()} onClick={fillFromJson}>Fill Form from JSON</button><button className="btn btn-secondary" type="button" onClick={() => setJsonInput(demoJson)}>Load Demo JSON</button><button className="btn btn-accent" type="button" disabled={!importedQuestion} onClick={saveJsonQuestion}>Save JSON Question</button></div>{jsonSaveMessage && <p className="success-message json-save-status" role="status">{jsonSaveMessage}</p>}{jsonSaveError && <p className="form-error json-save-status" role="alert">{jsonSaveError}</p>}</div><div><div className="json-label">Demo JSON structure</div><pre className="json-demo"><code>{demoJson}</code></pre></div></div></div><div className="aq-layout"><div className="glass-card"><QuestionEditorForm key={editorVersion} initialQuestion={importedQuestion || undefined} categories={questions.map((question) => question.category).filter(Boolean).filter((category, index, list) => list.indexOf(category) === index).sort()} onSubmit={saveQuestion} statusMessage={message} statusError={error} /></div></div></section>;
 }
 
 export default AddQuestion;

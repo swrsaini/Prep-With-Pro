@@ -226,6 +226,23 @@
     text-align: center;
 }
 
+.reports-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.reports-pagination .btn {
+    min-height: 36px;
+    padding: 0 0.9rem;
+    font-size: 0.78rem;
+}
+
 @media (max-width: 600px) {
     .reports-header,
     .report-card-header,

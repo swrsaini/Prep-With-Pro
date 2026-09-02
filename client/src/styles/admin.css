@@ -119,6 +119,11 @@
     font-size: 0.78rem;
 }
 
+.json-save-status {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
 .json-demo {
     min-height: 220px;
     max-height: 330px;
