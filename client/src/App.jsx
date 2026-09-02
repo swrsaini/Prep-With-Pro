@@ -5,6 +5,7 @@ import { AppProvider } from './context/AppContext';
 import { ToastProvider } from './context/ToastContext';
 import { PomodoroProvider } from './context/PomodoroContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
 import PortalLayout from './layouts/PortalLayout';
 import Dashboard from './pages/Dashboard';
 import PracticeEngine from './pages/PracticeEngine';
@@ -27,9 +28,11 @@ function PortalShell() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route element={<PublicRoute />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
       <Route element={<ProtectedRoute />}>
         <Route element={<PortalLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
