@@ -1,0 +1,275 @@
+.settings-page-title {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.settings-page .settings-card {
+    min-width: 0;
+}
+
+.settings-page .settings-card h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.settings-page .setting-row p {
+    font-weight: 600;
+}
+
+.settings-page .setting-row span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.reset-button {
+    width: 100%;
+    color: var(--danger);
+    background: var(--danger-light);
+}
+
+.settings-upload-card {
+    grid-column: 1 / -1;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.settings-upload-card p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.settings-upload-card input[type="file"] {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.settings-upload-card > span {
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.settings-upload-card .btn {
+    width: 100%;
+}
+
+.fab-container {
+    z-index: 160;
+}
+
+.pomo-fab-panel {
+    position: absolute;
+    right: 3.5rem;
+    bottom: 0;
+    display: none;
+    width: 260px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-sidebar);
+    box-shadow: var(--shadow-lg);
+}
+
+.pomo-fab-trigger {
+    order: 2;
+}
+
+.fab-container:hover .pomo-fab-panel,
+.pomo-fab-panel:focus-within,
+.pomo-fab-panel.open {
+    display: block;
+}
+
+.pomo-fab-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.pomo-fab-display span {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.pomo-fab-display strong {
+    color: var(--accent);
+    font-family: var(--font-mono);
+}
+
+.pomo-fab-actions,
+.pomo-phase-actions {
+    display: flex;
+    gap: 0.45rem;
+}
+
+.pomo-fab-actions button,
+.pomo-phase-actions button {
+    flex: 1;
+    min-height: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.7rem;
+}
+
+.pomo-fab-actions button:first-child,
+.pomo-phase-actions button.active {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.pomo-phase-actions {
+    margin-top: 0.65rem;
+}
+
+.scroll-top-fab {
+    display: none;
+    background: var(--accent-gradient);
+}
+
+.scroll-top-fab.visible {
+    display: grid;
+}
+
+.subscribe-gate-overlay {
+    z-index: 300;
+}
+
+.subscribe-gate-modal {
+    max-width: 565px;
+    padding: 2.5rem 2.1rem 2.2rem;
+    border: 0;
+    border-radius: 24px;
+    box-shadow: none;
+}
+
+.subscribe-gate-title {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1.45rem;
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.subscribe-copy,
+.subscribe-note {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.subscribe-copy {
+    margin-bottom: 1.5rem;
+    font-size: 1.12rem;
+}
+
+.subscribe-note {
+    margin-top: 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.subscribe-check-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 94px;
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+
+.subscribe-check-row label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.subscribe-check-row input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary);
+}
+
+.subscribe-action {
+    display: inline-flex;
+    min-width: 174px;
+    min-height: 58px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0 1rem;
+    border-radius: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.subscribe-youtube-action {
+    background: #cf302b;
+}
+
+.subscribe-telegram-action {
+    background: #27a2d8;
+}
+
+.subscribe-continue {
+    width: 100%;
+    min-height: 57px;
+    margin-top: 1.85rem;
+    border-radius: 16px;
+    background: var(--primary-gradient);
+    font-size: 1rem;
+}
+
+.subscribe-continue:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    .subscribe-gate-modal {
+        padding: 2rem 1.25rem 1.8rem;
+    }
+
+    .subscribe-gate-title {
+        font-size: 1.45rem;
+    }
+
+    .subscribe-copy {
+        font-size: 1rem;
+    }
+
+    .subscribe-check-row {
+        padding: 0.85rem 1rem;
+    }
+
+    .subscribe-action {
+        min-width: 0;
+        width: 174px;
+    }
+
+    .pomo-fab-panel {
+        right: 0;
+        bottom: 3.5rem;
+    }
+}

@@ -1,0 +1,129 @@
+        /* CSS RESET & VARIABLES */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        :root {
+            /* Light Theme Palette */
+            --bg-primary: #f8fafc;
+            --bg-sidebar: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-hover: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(226, 232, 240, 0.8);
+            --border-hover: rgba(203, 213, 225, 1);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            
+            --primary: #2563eb;
+            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            --accent: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            
+            --success: #10b981;
+            --success-light: rgba(16, 185, 129, 0.1);
+            --danger: #ef4444;
+            --danger-light: rgba(239, 68, 68, 0.1);
+            --warning: #f59e0b;
+            --warning-light: rgba(245, 158, 11, 0.1);
+            --info: #06b6d4;
+            --info-light: rgba(6, 182, 212, 0.1);
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --sidebar-width: 260px;
+            --sidebar-collapsed-width: 80px;
+
+            /* SYNTAX HIGHLIGHT VARIABLES */
+            --code-keyword: #2563eb;
+            --code-string: #059669;
+            --code-number: #d97706;
+            --code-bg: #f1f5f9;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Palette */
+            --bg-primary: #090d16;
+            --bg-sidebar: #0f172a;
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --bg-card-hover: rgba(30, 41, 59, 0.8);
+            --border-color: rgba(51, 65, 85, 0.5);
+            --border-hover: rgba(71, 85, 105, 0.8);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            
+            --primary: #3b82f6;
+            --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            --accent: #a78bfa;
+            --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+            
+            --success: #34d399;
+            --success-light: rgba(52, 211, 153, 0.15);
+            --danger: #f87171;
+            --danger-light: rgba(248, 113, 113, 0.15);
+            --warning: #fbbf24;
+            --warning-light: rgba(251, 191, 36, 0.15);
+            --info: #22d3ee;
+            --info-light: rgba(34, 211, 238, 0.15);
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+            --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+
+            /* SYNTAX HIGHLIGHT VARIABLES DARK MODE */
+            --code-keyword: #60a5fa;
+            --code-string: #34d399;
+            --code-number: #fbbf24;
+            --code-bg: #1e293b;
+        }
+
+        /* COMPACT MODE MODIFIERS */
+        body.compact-mode {
+            font-size: 0.9rem;
+        }
+        body.compact-mode .glass-card {
+            padding: 1rem !important;
+            border-radius: 10px !important;
+        }
+        body.compact-mode .question-option-card {
+            padding: 0.75rem 1rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        /* BASE STYLING */
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* SCROLLBAR CUSTOMIZATION */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+

@@ -1,0 +1,167 @@
+.practice-page {
+    min-width: 0;
+}
+
+.practice-question-card,
+.practice-page .split-layout > .glass-card {
+    min-width: 0;
+}
+
+.practice-exam {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.practice-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.practice-timer {
+    color: var(--primary);
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+.practice-active-action {
+    color: var(--accent);
+}
+
+.practice-question-card .question-text .question-prose,
+.practice-question-card .explanation-text .question-prose {
+    display: inline;
+}
+
+.question-prose {
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.question-image-container {
+    display: block;
+    margin: 1rem 0;
+}
+
+.question-image-container img {
+    display: block;
+    max-width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.code-token-comment {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.code-token-string {
+    color: var(--code-string);
+}
+
+.code-token-keyword {
+    color: var(--code-keyword);
+    font-weight: 600;
+}
+
+.code-token-number {
+    color: var(--code-number);
+}
+
+.practice-code-option .question-prose {
+    display: inline;
+}
+
+.match-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 1.75rem;
+}
+
+.match-column {
+    display: flex;
+    min-width: min(260px, 100%);
+    flex: 1;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.match-column h4 {
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.match-column h4.primary {
+    color: var(--primary);
+}
+
+.match-column h4.accent {
+    color: var(--accent);
+}
+
+.match-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-sidebar);
+    box-shadow: var(--shadow-sm);
+    font-size: 0.9rem;
+    word-break: break-word;
+}
+
+.match-label {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.match-label.primary {
+    background: var(--primary-gradient);
+}
+
+.match-label.accent {
+    background: var(--accent-gradient);
+}
+
+.practice-explanation {
+    display: block;
+}
+
+.empty-practice {
+    padding: 2rem 0;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.practice-error {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .practice-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .practice-page .split-layout {
+        gap: 1rem;
+    }
+}

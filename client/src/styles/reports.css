@@ -1,0 +1,248 @@
+.report-modal {
+    width: min(560px, calc(100% - 2rem));
+}
+
+.report-question-preview {
+    max-height: 130px;
+    margin-bottom: 1.2rem;
+    overflow-y: auto;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.report-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.report-modal textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 0.8rem;
+    resize: vertical;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.report-modal textarea:focus {
+    border-color: var(--primary);
+}
+
+.reports-page,
+.reports-list {
+    min-width: 0;
+}
+
+.reports-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.reports-header h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.reports-header p {
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.reports-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.reports-filter select {
+    min-height: 38px;
+    padding: 0 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.8rem;
+}
+
+.report-counter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.report-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.report-counter strong {
+    color: var(--text-primary);
+}
+
+.counter-open {
+    border-color: var(--warning);
+    color: var(--warning);
+}
+
+.counter-open strong {
+    color: var(--warning);
+}
+
+.counter-resolved {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.counter-resolved strong {
+    color: var(--success);
+}
+
+.counter-dismissed {
+    color: var(--text-muted);
+}
+
+.reports-count {
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: var(--warning-light);
+    color: var(--warning);
+    font-size: 0.75rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.reports-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.report-card {
+    border-left: 5px solid var(--warning);
+}
+
+.report-card.report-resolved {
+    border-left-color: var(--success);
+}
+
+.report-card.report-dismissed {
+    border-left-color: var(--text-muted);
+}
+
+.report-card-header,
+.report-card-actions {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.report-card-header h4 {
+    margin-top: 0.7rem;
+    font-size: 1rem;
+}
+
+.report-card-header select {
+    min-height: 36px;
+    padding: 0 0.65rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.reported-question-text {
+    margin: 1rem 0;
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.report-reason {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    background: var(--bg-primary);
+}
+
+.report-reason strong {
+    font-size: 0.8rem;
+}
+
+.report-reason span,
+.report-reason p,
+.report-card-actions > span {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+}
+
+.report-reason p {
+    margin-top: 0.45rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.report-card-actions {
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.report-card-actions .btn {
+    min-height: 36px;
+    padding: 0 0.85rem;
+    font-size: 0.78rem;
+}
+
+.reports-empty {
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .reports-header,
+    .report-card-header,
+    .report-card-actions {
+        flex-direction: column;
+    }
+
+    .reports-filter {
+        width: 100%;
+    }
+
+    .reports-filter select {
+        flex: 1;
+    }
+
+    .report-card-header select,
+    .report-card-actions .btn {
+        width: 100%;
+    }
+}
