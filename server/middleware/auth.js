@@ -1,13 +1,13 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const User = require('../models/User');
+const User = require("../models/User");
 
 async function protect(req, res, next) {
-  const authorization = req.headers.authorization || '';
-  const [scheme, token] = authorization.split(' ');
+  const authorization = req.headers.authorization || "";
+  const [scheme, token] = authorization.split(" ");
 
-  if (scheme !== 'Bearer' || !token) {
-    return res.status(401).json({ message: 'Authentication required.' });
+  if (scheme !== "Bearer" || !token) {
+    return res.status(401).json({ message: "Authentication required." });
   }
 
   try {
@@ -15,19 +15,28 @@ async function protect(req, res, next) {
     const user = await User.findById(decoded.id);
 
     if (!user) {
-      return res.status(401).json({ message: 'User no longer exists.' });
+      return res.status(401).json({ message: "User no longer exists." });
+    }
+
+    if (
+      user.passwordChangedAt &&
+      decoded.iat * 1000 < user.passwordChangedAt.getTime()
+    ) {
+      return res.status(401).json({
+        message: "Password was changed. Please log in again.",
+      });
     }
 
     req.user = user;
     return next();
   } catch (error) {
-    return res.status(401).json({ message: 'Invalid or expired token.' });
+    return res.status(401).json({ message: "Invalid or expired token." });
   }
 }
 
 function adminOnly(req, res, next) {
-  if (!req.user || req.user.role !== 'admin') {
-    return res.status(403).json({ message: 'Admin access required.' });
+  if (!req.user || req.user.role !== "admin") {
+    return res.status(403).json({ message: "Admin access required." });
   }
 
   return next();

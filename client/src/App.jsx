@@ -1,25 +1,29 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { AppProvider } from './context/AppContext';
-import { ToastProvider } from './context/ToastContext';
-import { PomodoroProvider } from './context/PomodoroContext';
-import ProtectedRoute from './components/ProtectedRoute';
-import PublicRoute from './components/PublicRoute';
-import PortalLayout from './layouts/PortalLayout';
-import Dashboard from './pages/Dashboard';
-import PracticeEngine from './pages/PracticeEngine';
-import MockExam from './pages/MockExam';
-import Categories from './pages/Categories';
-import Bookmarks from './pages/Bookmarks';
-import IncorrectBank from './pages/IncorrectBank';
-import Analytics from './pages/Analytics';
-import AddQuestion from './pages/AddQuestion';
-import Settings from './pages/Settings';
-import Reports from './pages/Reports';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { AppProvider } from "./context/AppContext";
+import { ToastProvider } from "./context/ToastContext";
+import { PomodoroProvider } from "./context/PomodoroContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
+import PortalLayout from "./layouts/PortalLayout";
+import Dashboard from "./pages/Dashboard";
+import PracticeEngine from "./pages/PracticeEngine";
+import MockExam from "./pages/MockExam";
+import Categories from "./pages/Categories";
+import Bookmarks from "./pages/Bookmarks";
+import IncorrectBank from "./pages/IncorrectBank";
+import Analytics from "./pages/Analytics";
+import AddQuestion from "./pages/AddQuestion";
+import Settings from "./pages/Settings";
+import Reports from "./pages/Reports";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import VerifyEmail from "./pages/VerifyEmail";
+
 
 function PortalShell() {
   return <section className="view-pane active" />;
@@ -32,6 +36,9 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/verify-email/:token" element={<VerifyEmail />} />
       </Route>
       <Route element={<ProtectedRoute />}>
         <Route element={<PortalLayout />}>
